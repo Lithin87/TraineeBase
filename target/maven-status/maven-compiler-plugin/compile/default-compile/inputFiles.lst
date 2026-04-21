@@ -1,30 +1,30 @@
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\controller\CommentController.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\controller\ProjectController.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\controller\TaskController.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\controller\UserController.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\dto\CommentDTO.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\dto\ProjectDTO.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\dto\TaskDTO.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\dto\UserCreateDTO.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\dto\UserDTO.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\dto\UserUpdateDTO.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\entity\Comment.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\entity\Project.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\entity\Task.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\entity\User.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\exception\GlobalExceptionHandler.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\exception\ResourceNotFoundException.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\mapper\CommentMapper.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\mapper\ProjectMapper.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\mapper\TaskMapper.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\mapper\UserMapper.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\repository\CommentRepository.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\repository\ProjectRepository.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\repository\TaskRepository.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\repository\UserRepository.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\response\ApiResponse.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\service\CommentService.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\service\ProjectService.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\service\TaskService.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\service\UserService.java
-S:\Nikola Tesla\Trainer\techacademy\MTS\PROJECTS\TraineeBase\src\main\java\com\techacademy\trainbase\TrainbaseApplication.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/TrainbaseApplication.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/controller/CommentController.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/controller/ProjectController.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/controller/TaskController.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/controller/UserController.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/dto/CommentDTO.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/dto/ProjectDTO.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/dto/TaskDTO.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/dto/UserCreateDTO.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/dto/UserDTO.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/dto/UserUpdateDTO.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/entity/Comment.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/entity/Project.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/entity/Task.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/entity/User.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/exception/GlobalExceptionHandler.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/exception/ResourceNotFoundException.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/mapper/CommentMapper.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/mapper/ProjectMapper.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/mapper/TaskMapper.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/mapper/UserMapper.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/repository/CommentRepository.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/repository/ProjectRepository.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/repository/TaskRepository.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/repository/UserRepository.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/response/ApiResponse.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/service/CommentService.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/service/ProjectService.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/service/TaskService.java
+/workspaces/TraineeBase/src/main/java/com/techacademy/trainbase/service/UserService.java
