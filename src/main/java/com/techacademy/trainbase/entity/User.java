@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -35,6 +37,15 @@ public class User {
     
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+    
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Project> projects = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL)
+    private List<Task> assignedTasks = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
     
     @PrePersist
     protected void onCreate() {
@@ -98,5 +109,29 @@ public class User {
     
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+    
+    public List<Project> getProjects() {
+        return projects;
+    }
+    
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+    
+    public List<Task> getAssignedTasks() {
+        return assignedTasks;
+    }
+    
+    public void setAssignedTasks(List<Task> assignedTasks) {
+        this.assignedTasks = assignedTasks;
+    }
+    
+    public List<Comment> getComments() {
+        return comments;
+    }
+    
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

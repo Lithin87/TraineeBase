@@ -1,7 +1,11 @@
 package com.techacademy.trainbase.service;
 
+import com.techacademy.trainbase.entity.Project;
 import com.techacademy.trainbase.entity.Task;
+import com.techacademy.trainbase.entity.User;
+import com.techacademy.trainbase.repository.ProjectRepository;
 import com.techacademy.trainbase.repository.TaskRepository;
+import com.techacademy.trainbase.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,12 @@ public class TaskService {
     
     @Autowired
     private TaskRepository taskRepository;
+    
+    @Autowired
+    private ProjectRepository projectRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
     
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
@@ -34,8 +44,12 @@ public class TaskService {
             task.setDescription(taskDetails.getDescription());
             task.setStatus(taskDetails.getStatus());
             task.setPriority(taskDetails.getPriority());
-            task.setAssigneeId(taskDetails.getAssigneeId());
-            task.setProjectId(taskDetails.getProjectId());
+            if (taskDetails.getAssignee() != null) {
+                task.setAssignee(taskDetails.getAssignee());
+            }
+            if (taskDetails.getProject() != null) {
+                task.setProject(taskDetails.getProject());
+            }
             task.setDueDate(taskDetails.getDueDate());
             return taskRepository.save(task);
         }
@@ -51,11 +65,13 @@ public class TaskService {
     }
     
     public List<Task> getTasksByProject(Long projectId) {
-        return taskRepository.findByProjectId(projectId);
+        Optional<Project> project = projectRepository.findById(projectId);
+        return project.map(taskRepository::findByProject).orElse(List.of());
     }
     
     public List<Task> getTasksByAssignee(Long assigneeId) {
-        return taskRepository.findByAssigneeId(assigneeId);
+        Optional<User> assignee = userRepository.findById(assigneeId);
+        return assignee.map(taskRepository::findByAssignee).orElse(List.of());
     }
     
     public List<Task> getTasksByStatus(String status) {
@@ -67,6 +83,7 @@ public class TaskService {
     }
     
     public List<Task> getTasksByProjectAndStatus(Long projectId, String status) {
-        return taskRepository.findByProjectIdAndStatus(projectId, status);
+        Optional<Project> project = projectRepository.findById(projectId);
+        return project.map(p -> taskRepository.findByProjectAndStatus(p, status)).orElse(List.of());
     }
 }

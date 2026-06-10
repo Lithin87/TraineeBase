@@ -1,42 +1,48 @@
 package com.techacademy.trainbase.mapper;
 
+import com.techacademy.trainbase.dto.TaskCreateDTO;
 import com.techacademy.trainbase.dto.TaskDTO;
+import com.techacademy.trainbase.dto.TaskUpdateDTO;
 import com.techacademy.trainbase.entity.Task;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class, ProjectMapper.class})
 public interface TaskMapper {
     
     TaskMapper INSTANCE = Mappers.getMapper(TaskMapper.class);
     
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "title", source = "title")
-    @Mapping(target = "description", source = "description")
-    @Mapping(target = "status", source = "status")
-    @Mapping(target = "priority", source = "priority")
-    @Mapping(target = "assigneeId", source = "assigneeId")
-    @Mapping(target = "projectId", source = "projectId")
-    @Mapping(target = "dueDate", source = "dueDate")
-    @Mapping(target = "createdAt", source = "createdAt")
-    @Mapping(target = "updatedAt", source = "updatedAt")
+    @Mapping(target = "assigneeId", source = "assignee.id")
+    @Mapping(target = "projectId", source = "project.id")
     TaskDTO toDTO(Task task);
     
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "comments", ignore = true)
     Task toEntity(TaskDTO taskDTO);
     
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "title", source = "title")
-    @Mapping(target = "description", source = "description")
-    @Mapping(target = "status", source = "status")
-    @Mapping(target = "priority", source = "priority")
-    @Mapping(target = "assigneeId", source = "assigneeId")
-    @Mapping(target = "projectId", source = "projectId")
-    @Mapping(target = "dueDate", source = "dueDate")
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "assignee", ignore = true)
+    @Mapping(target = "project", ignore = true)
+    @Mapping(target = "comments", ignore = true)
+    Task toEntity(TaskCreateDTO taskCreateDTO);
+    
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "assignee", ignore = true)
+    @Mapping(target = "project", ignore = true)
+    @Mapping(target = "comments", ignore = true)
+    void updateEntityFromDTO(TaskUpdateDTO taskUpdateDTO, @MappingTarget Task task);
+    
+
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "comments", ignore = true)
     Task toEntityWithId(TaskDTO taskDTO);
 }

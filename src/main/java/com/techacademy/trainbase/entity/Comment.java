@@ -16,11 +16,13 @@ public class Comment {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
     
-    @Column(name = "task_id", nullable = false)
-    private Long taskId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "task_id", nullable = false)
+    private Task task;
     
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -33,10 +35,10 @@ public class Comment {
     // Constructors
     public Comment() {}
     
-    public Comment(String content, Long taskId, Long userId) {
+    public Comment(String content, Task task, User user) {
         this.content = content;
-        this.taskId = taskId;
-        this.userId = userId;
+        this.task = task;
+        this.user = user;
     }
     
     // Getters and Setters
@@ -56,20 +58,20 @@ public class Comment {
         this.content = content;
     }
     
-    public Long getTaskId() {
-        return taskId;
+    public Task getTask() {
+        return task;
     }
     
-    public void setTaskId(Long taskId) {
-        this.taskId = taskId;
+    public void setTask(Task task) {
+        this.task = task;
     }
     
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
     
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
     
     public LocalDateTime getCreatedAt() {

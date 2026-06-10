@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tasks")
@@ -28,14 +30,19 @@ public class Task {
     @Column(nullable = false)
     private String priority;
     
-    @Column(name = "assignee_id")
-    private Long assigneeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assignee_id")
+    private User assignee;
     
-    @Column(name = "project_id", nullable = false)
-    private Long projectId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
     
     @Column(name = "due_date")
     private LocalDate dueDate;
+    
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
     
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -58,13 +65,13 @@ public class Task {
     public Task() {}
     
     public Task(String title, String description, String status, String priority, 
-                Long assigneeId, Long projectId, LocalDate dueDate) {
+                User assignee, Project project, LocalDate dueDate) {
         this.title = title;
         this.description = description;
         this.status = status;
         this.priority = priority;
-        this.assigneeId = assigneeId;
-        this.projectId = projectId;
+        this.assignee = assignee;
+        this.project = project;
         this.dueDate = dueDate;
     }
     
@@ -109,20 +116,20 @@ public class Task {
         this.priority = priority;
     }
     
-    public Long getAssigneeId() {
-        return assigneeId;
+    public User getAssignee() {
+        return assignee;
     }
     
-    public void setAssigneeId(Long assigneeId) {
-        this.assigneeId = assigneeId;
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
     }
     
-    public Long getProjectId() {
-        return projectId;
+    public Project getProject() {
+        return project;
     }
     
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setProject(Project project) {
+        this.project = project;
     }
     
     public LocalDate getDueDate() {
@@ -131,6 +138,14 @@ public class Task {
     
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
+    }
+    
+    public List<Comment> getComments() {
+        return comments;
+    }
+    
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
     
     public LocalDateTime getCreatedAt() {

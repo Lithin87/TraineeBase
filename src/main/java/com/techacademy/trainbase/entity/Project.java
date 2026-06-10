@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -21,8 +23,12 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String description;
     
-    @Column(name = "owner_id", nullable = false)
-    private Long ownerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", nullable = false)
+    private User owner;
+    
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
     
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -44,10 +50,10 @@ public class Project {
     // Constructors
     public Project() {}
     
-    public Project(String name, String description, Long ownerId) {
+    public Project(String name, String description, User owner) {
         this.name = name;
         this.description = description;
-        this.ownerId = ownerId;
+        this.owner = owner;
     }
     
     // Getters and Setters
@@ -75,12 +81,20 @@ public class Project {
         this.description = description;
     }
     
-    public Long getOwnerId() {
-        return ownerId;
+    public User getOwner() {
+        return owner;
     }
     
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+    
+    public List<Task> getTasks() {
+        return tasks;
+    }
+    
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
     
     public LocalDateTime getCreatedAt() {
