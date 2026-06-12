@@ -4,16 +4,11 @@ import com.techacademy.trainbase.dto.ProjectCreateDTO;
 import com.techacademy.trainbase.dto.ProjectDTO;
 import com.techacademy.trainbase.dto.ProjectUpdateDTO;
 import com.techacademy.trainbase.entity.Project;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface ProjectMapper {
     
-    ProjectMapper INSTANCE = Mappers.getMapper(ProjectMapper.class);
-
     @Mapping(target = "ownerId", source = "owner.id")
     ProjectDTO toDTO(Project project);
     
@@ -21,6 +16,7 @@ public interface ProjectMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "tasks", ignore = true)
+    @Mapping(target = "owner", ignore = true)
     Project toEntity(ProjectDTO projectDTO);
     
     @Mapping(target = "id", ignore = true)
@@ -30,6 +26,7 @@ public interface ProjectMapper {
     @Mapping(target = "tasks", ignore = true)
     Project toEntity(ProjectCreateDTO projectCreateDTO);
     
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
@@ -41,5 +38,6 @@ public interface ProjectMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "tasks", ignore = true)
+    @Mapping(target = "owner", ignore = true)
     Project toEntityWithId(ProjectDTO projectDTO);
 }

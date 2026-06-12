@@ -4,10 +4,7 @@ import com.techacademy.trainbase.dto.CommentCreateDTO;
 import com.techacademy.trainbase.dto.CommentDTO;
 import com.techacademy.trainbase.dto.CommentUpdateDTO;
 import com.techacademy.trainbase.entity.Comment;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -32,6 +29,7 @@ public interface CommentMapper {
     @Mapping(target = "user", ignore = true)
     Comment toEntity(CommentCreateDTO commentCreateDTO);
     
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "task", ignore = true)
